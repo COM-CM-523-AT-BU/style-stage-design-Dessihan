@@ -43,4 +43,358 @@ body {
   }
 }
 
-// Begin theme styles
+/* Begin theme styles
+
+/* ===============================================
+   Style Stage — Full Yellow × Purple Theme
+   =============================================== */
+
+/* ---------- Color Palette ---------- */
+:root {
+  --yellow-bg: #FFF9DC;
+  --yellow-card: #FFF0B3;
+  --yellow-card-2: #FFE68A;
+  --yellow-shadow: rgba(202, 138, 4, 0.45);
+
+  --purple: #4C1D95;
+  --purple-hover: #3B0A6F;
+  --purple-light: #7C3AED;
+
+  --text: #3b2f0b;
+  --muted: #6b5c25;
+
+  --border: #E6C84F;
+  --shadow: 0 8px 24px rgba(109, 87, 5, .18);
+  --radius: 0.75rem;
+  --container: min(1100px, 90vw);
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--yellow-bg);
+  color: var(--text);
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------- Header ---------- */
+header {
+  text-align: center;
+  padding: 3rem 0 2rem;
+  background: radial-gradient(50% 60% at 20% 20%, rgba(255, 221, 87, .35), transparent 60%);
+  border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  color: var(--purple);
+  margin-top: 1.25rem;
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+header h2 {
+  color: var(--purple);
+  font-size: clamp(1.125rem, 2vw, 1.6rem);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+header p {
+  color: var(--purple);
+  font-size: 1rem;
+  margin: 0.5rem 0 0;
+}
+
+header a {
+  color: var(--purple);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+header a:hover {
+  color: var(--purple-hover);
+}
+
+/* Star on GitHub button */
+.link-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background: var(--purple);
+  color: #fff;
+  border: 1px solid var(--purple-hover);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.link-github:hover {
+  transform: scale(1.06);
+  background: var(--purple-hover);
+  box-shadow: 0 8px 18px var(--yellow-shadow);
+}
+.link-github svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 249, 220, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.75rem 0;
+}
+nav a {
+  color: var(--purple);
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+nav a:hover {
+  background: rgba(107, 43, 217, 0.1);
+}
+
+/* ---------- Main ---------- */
+main {
+  margin: 3rem auto;
+  display: grid;
+  gap: 2rem;
+  width: 100%;
+  max-width: var(--container);
+}
+article, aside, footer {
+  background: linear-gradient(180deg, var(--yellow-card), var(--yellow-card-2));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+/* ---------- Headings & Typography ---------- */
+h2, h3, h4 {
+  color: var(--purple);
+}
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 3px solid var(--purple);
+  display: inline-block;
+  padding-bottom: 0.2rem;
+}
+h3 {
+  font-size: 1.35rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+h4 {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+p, li {
+  font-size: 1rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+blockquote {
+  border-left: 4px solid var(--purple);
+  background: rgba(107, 43, 217, 0.05);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--text);
+  border-radius: 0.5rem;
+}
+
+/* ---------- Lists ---------- */
+ul, ol {
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+li::marker {
+  color: var(--purple);
+}
+
+/* ---------- Buttons / Links ---------- */
+.link-guidelines,
+.link-allstyles,
+.link-downloadcss,
+.link-downloadhtml,
+.link-codepen {
+  display: inline-block;
+  margin: 0.25rem 0.25rem 0 0;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--purple-hover);
+  background: var(--purple);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow);
+}
+.link-guidelines:hover,
+.link-allstyles:hover,
+.link-downloadcss:hover,
+.link-downloadhtml:hover,
+.link-codepen:hover {
+  transform: translateY(-2px);
+  background: var(--purple-hover);
+  box-shadow: 0 6px 16px var(--yellow-shadow);
+}
+
+/* ---------- Aside: Profile + Styles ---------- */
+.profile h4 {
+  color: var(--purple);
+}
+.profile ul {
+  list-style: none;
+  padding: 0;
+}
+.profile li {
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+.profile a {
+  color: var(--purple);
+  text-decoration: underline;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.features li {
+  padding: 0.8rem;
+  background: rgba(255, 230, 138, 0.4);
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.features li:hover {
+  transform: translateY(-2px);
+  border-color: var(--purple);
+}
+.features a {
+  color: var(--purple);
+  text-decoration: none;
+}
+
+/* ---------- Footer ---------- */
+footer.page-footer {
+  text-align: center;
+  margin-top: 3rem;
+  background: linear-gradient(180deg, var(--yellow-card), var(--yellow-card-2));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+footer.page-footer a {
+  color: var(--purple);
+  text-decoration: underline;
+}
+footer.page-footer a:hover {
+  color: var(--purple-hover);
+}
+
+/* ---------- Responsive Layout ---------- */
+@media (min-width: 64rem) {
+  main {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+  #styles {
+    position: sticky;
+    top: 5rem;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+
+header,
+nav,
+main,
+aside,
+footer.page-footer {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;   
+  padding-inline: 1rem; 
+}
+
+
+main {
+  justify-items: center;   
+  justify-content: center; 
+}
+
+
+article,
+aside,
+footer.page-footer {
+  width: 100%;
+  max-width: 800px;       
+  margin-inline: auto;    
+}
+
+
+article > .container,
+aside > .container,
+footer.page-footer > .container,
+section.container {
+  width: 100%;
+  max-width: 800px;
+  margin-inline: auto;
+}
