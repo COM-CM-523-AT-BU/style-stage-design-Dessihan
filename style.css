@@ -153,6 +153,7 @@ header a:hover {
 }
 .link-github:hover {
   transform: scale(1.06);
+  color: #fff;
   background: var(--purple-hover);
   box-shadow: 0 8px 18px var(--yellow-shadow);
 }
