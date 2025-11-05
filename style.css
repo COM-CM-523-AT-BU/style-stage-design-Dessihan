@@ -102,21 +102,28 @@ header {
   text-align: center;
   padding: 3rem 0 2rem;
   background: radial-gradient(50% 60% at 20% 20%, rgba(255, 221, 87, .35), transparent 60%);
-  border-bottom: 1px solid var(--border);
 }
 
 header h1 {
   font-size: clamp(2.75rem, 5vw, 4.5rem);
   line-height: 1.05;
   color: var(--purple);
-  margin-top: 1.25rem;
-  margin-bottom: 0.9rem;
+  margin-top: 1em;
+  margin-bottom: 2em; 
   letter-spacing: 0.02em;
+
+  /* Larger purple box with scalable spacing */
+  display: inline-block;
+  padding: 1em 2em;             
+  border: 0.25em solid var(--purple);
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 1.5em rgba(124, 58, 237, 0.35); /* soft light-purple glow */
+  background: rgba(255, 255, 255, 0.25); 
 }
 
 header h2 {
   color: var(--purple);
-  font-size: clamp(1.125rem, 2vw, 1.6rem);
+  font-size: clamp(2rem, 2vw, 1.6rem);
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
@@ -164,42 +171,64 @@ header a:hover {
 }
 
 /* ---------- Navigation ---------- */
+
 nav {
   position: sticky;
-  top: 0;
   z-index: 50;
   background: rgba(255, 249, 220, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+
+  
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  height: 3em;             
+  padding-top: 3 em;            
 }
+
 nav ul {
   display: flex;
-  justify-content: center;
+  align-items: center;     
+  justify-content: center; 
   flex-wrap: wrap;
   list-style: none;
-  gap: 0.75rem;
+  gap: 1rem;
   margin: 0;
-  padding: 0.75rem 0;
+   padding-top: 1 em;   
 }
+
 nav a {
   color: var(--purple);
   text-decoration: none;
-  padding: 0.5rem 0.9rem;
-  border-radius: 0.5rem;
+  padding: 0.4em 0.8em;
+  border-radius: 0.5em;
   transition: background 0.2s ease, color 0.2s ease;
 }
+
 nav a:hover {
   background: rgba(107, 43, 217, 0.1);
 }
 
+
 /* ---------- Main ---------- */
 main {
-  margin: 3rem auto;
-  display: grid;
+  margin: 3rem auto;                
   gap: 2rem;
   width: 100%;
   max-width: var(--container);
+  justify-content: center;          
+  justify-items: center;            
 }
+
+
+main .container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;              
+}
+
 article, aside, footer {
   background: linear-gradient(180deg, var(--yellow-card), var(--yellow-card-2));
   border: 1px solid var(--border);
@@ -278,64 +307,111 @@ li::marker {
 .link-codepen:hover {
   transform: translateY(-2px);
   background: var(--purple-hover);
+  color: #fff;
   box-shadow: 0 6px 16px var(--yellow-shadow);
 }
 
-/* ---------- Aside: Profile + Styles ---------- */
-.profile h4 {
-  color: var(--purple);
-}
-.profile ul {
-  list-style: none;
-  padding: 0;
-}
-.profile li {
-  margin-bottom: 0.4rem;
-  color: var(--text);
-}
-.profile a {
-  color: var(--purple);
-  text-decoration: underline;
-}
-
-.features {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  gap: 0.75rem;
-}
-.features li {
-  padding: 0.8rem;
-  background: rgba(255, 230, 138, 0.4);
-  border-radius: 0.75rem;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-.features li:hover {
-  transform: translateY(-2px);
-  border-color: var(--purple);
-}
-.features a {
-  color: var(--purple);
-  text-decoration: none;
-}
 
 /* ---------- Footer ---------- */
-footer.page-footer {
-  text-align: center;
-  margin-top: 3rem;
-  background: linear-gradient(180deg, var(--yellow-card), var(--yellow-card-2));
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+
+
+/* Layout the footer links in a row */
+.page-footer ul {
+  list-style: none;
+  margin: 1.25em 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75em 1em;
+}
+
+/* Turn footer links into purple pill buttons with animation */
+.page-footer .link-twittercontact,
+.page-footer .link-github,
+.page-footer .link-rss,
+.page-footer .link-support {
+  display: inline-flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0.6em 1em;
+  border-radius: 999px;
+  background: var(--purple);
+  color: #fff;
+  border: 1px solid var(--purple-hover);
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1;
   box-shadow: var(--shadow);
-  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  white-space: nowrap; 
 }
-footer.page-footer a {
-  color: var(--purple);
-  text-decoration: underline;
+
+/* Hover/Focus: pump up + dark yellow glow */
+.page-footer .link-twittercontact:hover,
+.page-footer .link-github:hover,
+.page-footer .link-rss:hover,
+.page-footer .link-support:hover,
+.page-footer .link-twittercontact:focus-visible,
+.page-footer .link-github:focus-visible,
+.page-footer .link-rss:focus-visible,
+.page-footer .link-support:focus-visible {
+  transform: scale(1.06);
+  background: var(--purple-hover);
+  box-shadow: 0 0.6em 1.2em var(--yellow-shadow);
+  color: #fff;
+  outline: none; 
 }
-footer.page-footer a:hover {
-  color: var(--purple-hover);
+
+
+.page-footer .link-github svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
 }
+
+.page-footer ul {
+  display: flex;
+  align-items: center;      
+  justify-content: center;  
+  gap: 0.75em 1em;
+  flex-wrap: nowrap;        
+}
+
+.page-footer ul > li {
+  display: flex;            
+}
+
+
+.page-footer .link-twittercontact,
+.page-footer .link-github,
+.page-footer .link-rss,
+.page-footer .link-support {
+  display: inline-flex;
+  align-items: center;     
+  justify-content: center;
+  line-height: 1;          
+  white-space: nowrap;      
+  padding: 0.6em 0.9em;   
+}
+
+
+.page-footer .link-github svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  flex-shrink: 0;
+  transform: translateY(0.05em); 
+}
+
+
+@media (max-width: 560px) {
+  .page-footer ul {
+    flex-wrap: wrap;        
+    gap: 0.5em 0.6em;
+  }
+}
+
 
 /* ---------- Responsive Layout ---------- */
 @media (min-width: 64rem) {
@@ -398,4 +474,136 @@ section.container {
   width: 100%;
   max-width: 800px;
   margin-inline: auto;
+}
+/* === white boxes for the Modern CSS list === */
+:root{
+  --feature-card-w: 12em;  
+  --feature-card-h: 5em;   
+}
+
+article#about > section.container:nth-of-type(2) ul{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(var(--feature-card-w), var(--feature-card-w)));
+  
+  grid-auto-rows: var(--feature-card-h);     
+  gap: 1em;
+  list-style: none !important;
+  padding: 0;
+  margin: 2em 0 0;
+  justify-content: center;                   
+}
+
+article#about > section.container:nth-of-type(2) li{
+  /* white card visuals */
+  background: #fff;
+  color: var(--purple);
+  font-weight: 600;
+  border: 0.15em solid var(--purple);
+  border-radius: 0.75em;
+  box-shadow: 0 0.4em 1em rgba(107,43,217,.15);
+
+  
+  width: var(--feature-card-w);
+  height: var(--feature-card-h);
+  box-sizing: border-box;
+  padding: .75em;                
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+article#about > section.container:nth-of-type(2) li:hover{
+  transform: translateY(-.15em);
+  box-shadow: 0 .6em 1.5em rgba(107,43,217,.25);
+  background: rgba(255,255,255,.95);
+}
+
+
+@media (max-width: 480px){
+  :root{
+    --feature-card-w: 10.5em;
+    --feature-card-h: 5.5em;
+  }
+}
+
+/* === Fixed side panel*/
+
+aside.profile {
+  position: fixed;
+  inset: 6.5em 1.25em auto auto;
+  width: 18em;
+  max-height: calc(100vh - 8em); 
+  overflow: auto;              
+  z-index: 100;
+
+  background: linear-gradient(180deg, var(--yellow-card), var(--yellow-card-2));
+  border: 0.1em solid var(--border);
+  border-radius: 0.75em;
+  box-shadow: var(--shadow);
+}
+
+
+
+/* Typography + list cleanup */
+aside.profile h4 {
+  color: var(--purple);
+  font-size: 1rem;
+  margin: 0 0 .5em 0;
+  text-align: left;
+}
+aside.profile ul {
+  list-style: none;
+  margin: 0 0 .75em 0;
+  padding: 0;
+  
+  gap: .4em;
+}
+aside.profile li {
+  font-size: .95rem;
+  color: var(--text);
+ 
+  grid-template-columns: 5.5ch 1fr; /* label | value */
+  gap: .5em;
+}
+aside.profile li span:first-child {
+  color: var(--muted);
+}
+
+/* "View Stylesheet"  purple button */
+aside.profile a[href*="main-stage.css"] {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: .6em .9em;
+  border-radius: .65em;
+  border: 1px solid var(--purple-hover);
+  background: var(--purple);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+aside.profile a[href*="main-stage.css"]:hover {
+  transform: translateY(-2px);
+  background: var(--purple-hover);
+  box-shadow: 0 .6em 1.2em var(--yellow-shadow);
+}
+/* === spacing between each main content box === */
+main article,
+main section.container,
+aside,
+footer.page-footer {
+  margin-bottom: 2.5rem; 
+}
+
+
+@media (min-width: 64rem) {
+  main article,
+  main section.container {
+    margin-bottom: 3rem;
+  }
 }
