@@ -43,7 +43,7 @@ body {
   }
 }
 
-/* Begin theme styles
+/* Begin theme styles*/
 
 /* ===============================================
    Style Stage — Full Yellow × Purple Theme
@@ -144,7 +144,7 @@ header a:hover {
 }
 
 /* Star on GitHub button */
-header.link-github {
+header .link-github {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -158,13 +158,13 @@ header.link-github {
   font-weight: 700;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.link-github:hover {
+header .link-github:hover {
   transform: scale(1.06);
   color: #fff;
   background: var(--purple-hover);
   box-shadow: 0 8px 18px var(--yellow-shadow);
 }
-.link-github svg {
+header .link-github svg {
   width: 1em;
   height: 1em;
   fill: currentColor;
@@ -185,7 +185,7 @@ nav {
   justify-content: center; 
   align-items: center;     
   height: 3em;             
-  padding-top: 3 em;            
+  padding-top: 3em;            
 }
 
 nav ul {
@@ -196,7 +196,7 @@ nav ul {
   list-style: none;
   gap: 1rem;
   margin: 0;
-   padding-top: 1 em;   
+   padding-top: 1em;   
 }
 
 nav a {
