@@ -104,22 +104,26 @@ header {
   background: radial-gradient(50% 60% at 20% 20%, rgba(255, 221, 87, .35), transparent 60%);
 }
 
+/* Apply Barrio font only to the main title */
 header h1 {
+  font-family: "Barrio", system-ui, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: clamp(2.75rem, 5vw, 4.5rem);
   line-height: 1.05;
   color: var(--purple);
   margin-top: 1em;
-  margin-bottom: 2em; 
+  margin-bottom: 2em;
   letter-spacing: 0.02em;
 
-  /* Larger purple box with scalable spacing */
   display: inline-block;
-  padding: 1em 2em;             
+  padding: 1em 2em;
   border: 0.25em solid var(--purple);
   border-radius: 0.5em;
-  box-shadow: 0 0.5em 1.5em rgba(124, 58, 237, 0.35); /* soft light-purple glow */
-  background: rgba(255, 255, 255, 0.25); 
+  box-shadow: 0 0.5em 1.5em rgba(124, 58, 237, 0.35);
+  background: rgba(255, 255, 255, 0.25);
 }
+
 
 header h2 {
   color: var(--purple);
@@ -177,8 +181,7 @@ nav {
   z-index: 50;
   background: rgba(255, 249, 220, 0.95);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
-  border-top: 1px solid var(--border);
+
 
   
   display: flex;
@@ -602,3 +605,136 @@ footer.page-footer {
     margin-bottom: 3rem;
   }
 }
+/* === Make spacing between Contribute and Featured Styles match other sections === */
+
+/* Remove the big space created by <main> itself */
+main {
+  margin: 3rem auto 0; /* top 3rem, sides auto, bottom 0 */
+}
+
+/* Give the desired rhythm between the two sections */
+#contribute {
+  margin-bottom: 2.5rem; /* same as your other boxes (use 3rem on desktop if you prefer) */
+}
+
+aside#styles {
+  margin-top: 0;          /* avoid double spacing caused by main’s margin */
+}
+
+/* Kill internal top offsets inside the Featured Styles card */
+aside#styles .container { padding-top: 0; margin-top: 0; }
+aside#styles h2 { margin-top: 0; }
+
+/* Optional: if you use larger spacing on desktop elsewhere, mirror it here */
+@media (min-width: 64rem) {
+  #contribute { margin-bottom: 3rem; }
+}
+
+/* === Responsive footer fixes === */
+
+/* Base: keep footer constrained and centered */
+footer.page-footer {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: 1.25rem 1rem; /* a bit tighter on small screens */
+}
+
+/* Footer actions layout */
+.page-footer ul {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.75em 1em;
+  flex-wrap: wrap; /* allow wrapping by default for safety */
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.page-footer ul > li {
+  display: flex;
+}
+
+/* Pill buttons (shared) */
+.page-footer .link-twittercontact,
+.page-footer .link-github,
+.page-footer .link-rss,
+.page-footer .link-support {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.65em 1em;
+  min-height: 2.75em;
+  line-height: 1.05;
+  border-radius: 999px;
+  background: var(--purple);
+  color: #fff;
+  border: 1px solid var(--purple-hover);
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.page-footer .link-github svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* --- Breakpoint 1: phones (<= 640px): two per row --- */
+@media (max-width: 640px) {
+  .page-footer ul {
+    gap: 0.6em 0.6em;
+  }
+  .page-footer ul > li {
+    flex: 1 1 calc(50% - 0.6em); /* 2-up grid */
+  }
+  .page-footer .link-twittercontact,
+  .page-footer .link-github,
+  .page-footer .link-rss,
+  .page-footer .link-support {
+    width: 100%; /* each pill fills its li cell */
+    padding: 0.7em 0.9em;
+    font-size: 0.95rem; /* avoid wrapping */
+  }
+}
+
+/* --- Breakpoint 2: very small phones (<= 380px): stack 1 per row --- */
+@media (max-width: 380px) {
+  .page-footer ul > li {
+    flex: 1 1 100%;
+  }
+  .page-footer .link-twittercontact,
+  .page-footer .link-github,
+  .page-footer .link-rss,
+  .page-footer .link-support {
+    font-size: 0.92rem;  /* slightly smaller label */
+    padding: 0.75em 0.9em;
+  }
+}
+
+/* Safe area support (iOS notch) */
+@supports(padding:max(0px)) {
+  footer.page-footer {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* In case your fixed .profile card overlaps the footer on small screens, revert it */
+@media (max-width: 64rem) {
+  aside.profile {
+    position: static;
+    width: 100%;
+    max-height: none;
+    inset: auto;
+    margin: 1rem auto 0;
+  }
+}
+
